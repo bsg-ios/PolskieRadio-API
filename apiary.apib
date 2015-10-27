@@ -3,78 +3,59 @@ HOST: http://polls.apiblueprint.org/
 
 # PolskieRadio - Sport
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+API Specification.
 
-## Questions Collection [/questions]
+## Articles Collection [/articles]
 
-### List All Questions [GET]
+### List All Articles [GET]
 
 + Response 200 (application/json)
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "meta": 
+            {
+                "offset" : 0,
+                "limit" : 2,
+                "count" : 100
+            }
+            "data": 
+                [
+                    {
+                        "id": 1,
+                        "title": "Title 1",
+                        "discipline": "FOOTBALL",
+                        "thumbnail": {
+                            "url": "http://sampleimage.com/image1.jpg,
+                            "width": 200,
+                            "height": 100
+                        },
+                        "hasVideo" : true,
+                        "hasImage" : false
+                    },
+                    {
+                        "id": 2,
+                        "title": "Title 2",
+                        "discipline": "VOLLEYBALL",
+                        "thumbnail": {
+                            "url": "http://sampleimage.com/image2.jpg,
+                            "width": 200,
+                            "height": 100
+                        },
+                        "hasVideo" : true,
+                        "hasImage" : true
+                    },
+                ]
         }
 
-+ Response 201 (application/json)
++ Response 400 (application/json)
 
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+        {
+            "errors":
+            [
+                {
+                    "title": "invalid parameter",
+                    "details": "parameter 'offfffset' is not a valid parameter",
+                    "code": "1234"
+                }
+            ]
+        }
