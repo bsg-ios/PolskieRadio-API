@@ -25,32 +25,34 @@ API Specification.
                 "limit" : 2,
                 "count" : 100
             }
-            "data": [
-                {
-                    "id": 1,
-                    "title": "Title 1",
-                    "discipline": "FOOTBALL",
-                    "thumbnail": {
-                        "url": "http://sampleimage.com/image1.jpg,
-                        "width": 200,
-                        "height": 100
+            "data": {
+                "articles": [
+                    {
+                        "id": 1,
+                        "title": "Title 1",
+                        "discipline": "FOOTBALL",
+                        "thumbnail": {
+                            "url": "http://sampleimage.com/image1.jpg,
+                            "width": 200,
+                            "height": 100
+                        },
+                        "hasVideo" : true,
+                        "hasImage" : false
                     },
-                    "hasVideo" : true,
-                    "hasImage" : false
-                },
-                {
-                    "id": 2,
-                    "title": "Title 2",
-                    "discipline": "VOLLEYBALL",
-                    "thumbnail": {
-                        "url": "http://sampleimage.com/image2.jpg,
-                        "width": 200,
-                        "height": 100
-                    },
-                    "hasVideo" : true,
-                    "hasImage" : true
-                }
-            ]
+                    {
+                        "id": 2,
+                        "title": "Title 2",
+                        "discipline": "VOLLEYBALL",
+                        "thumbnail": {
+                            "url": "http://sampleimage.com/image2.jpg,
+                            "width": 200,
+                            "height": 100
+                        },
+                        "hasVideo" : true,
+                        "hasImage" : true
+                    }
+                ]
+            }
         }
 
 + Response 400 (application/json)
