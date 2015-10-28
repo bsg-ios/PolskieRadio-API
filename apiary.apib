@@ -5,57 +5,62 @@ HOST: http://polls.apiblueprint.org/
 
 API Specification.
 
-## Articles Collection [/articles]
+## Articles Collection [/articles?limit={limit}&offset={offset}]
+
 
 ### List All Articles [GET]
+
++ Parameters
+    + offset: `10` (number, optional) - offset of returned list.
+        + Default: `0`
+    + limit: `2` (number, optional) - number of elements in returned list.
+        + Default: `10`
+
 
 + Response 200 (application/json)
 
         {
-            "meta": 
-            {
-                "offset" : 0,
+            "meta": {
+                "offset" : 10,
                 "limit" : 2,
                 "count" : 100
             }
-            "data": 
-                [
-                    {
-                        "id": 1,
-                        "title": "Title 1",
-                        "discipline": "FOOTBALL",
-                        "thumbnail": {
-                            "url": "http://sampleimage.com/image1.jpg,
-                            "width": 200,
-                            "height": 100
-                        },
-                        "hasVideo" : true,
-                        "hasImage" : false
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Title 1",
+                    "discipline": "FOOTBALL",
+                    "thumbnail": {
+                        "url": "http://sampleimage.com/image1.jpg,
+                        "width": 200,
+                        "height": 100
                     },
-                    {
-                        "id": 2,
-                        "title": "Title 2",
-                        "discipline": "VOLLEYBALL",
-                        "thumbnail": {
-                            "url": "http://sampleimage.com/image2.jpg,
-                            "width": 200,
-                            "height": 100
-                        },
-                        "hasVideo" : true,
-                        "hasImage" : true
+                    "hasVideo" : true,
+                    "hasImage" : false
+                },
+                {
+                    "id": 2,
+                    "title": "Title 2",
+                    "discipline": "VOLLEYBALL",
+                    "thumbnail": {
+                        "url": "http://sampleimage.com/image2.jpg,
+                        "width": 200,
+                        "height": 100
                     },
-                ]
+                    "hasVideo" : true,
+                    "hasImage" : true
+                },
+            ]
         }
 
 + Response 400 (application/json)
 
         {
-            "errors":
-            [
-                {
+            "errors":[{
                     "title": "invalid parameter",
                     "details": "parameter 'offfffset' is not a valid parameter",
                     "code": "1234"
                 }
             ]
         }
+        
